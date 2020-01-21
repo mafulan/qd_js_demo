@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    button{
+        width: 200px;
+        height: 30px;
+    }
+    div{
+        width: 200px;
+        height: 400px;
+        background-color: red;
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <button>下拉框 </button>
+   <div></div>
+   <script>
+       function bind(obj,attr,fns){
+           for(var i=0;i<fns.length;i++){
+               obj.attachEvent ? obj.attachEvent("on"+attr,function(){
+                   fns[fns.length-1-i].call(obj);})
+                    : obj.addEventListener(attr,fns[i],false);
+           }
+       }
+       var oBtn = document.querySelector("button");
+       var oDiv =  document.querySelector("div");
+       bind(oBtn,"click",[function(){
+                    oDiv.style.display = "block";
+                    //阻止冒泡
+                    event.stopPropagation ? event.stopPropagation():event.cancelBubble=true;
+       }])
+       bind(document,"click",[function(){
+                    oDiv.style.display = "none";
+                   
+       }])
+
+
+   </script>
+
+</body>
+</html>

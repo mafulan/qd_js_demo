@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+    }
+    p{
+        font-size: 30px;
+        background-color: red;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <p>收到款福克斯的看法</p>
+    </div>
+    <script>
+    var oP = document.querySelector("p");
+    var oDiv = document.querySelector("div");
+    // var i = 0;
+    // oP.onmouseover = oP.onclick = function (){
+    //     i++;
+    //     console.log(i,event.type);
+    // }
+    oDiv.onclick = function (){
+        console.log("触发了",event.target.tagName.toLowerCase());
+    }
+    </script>
+</body>
+</html>

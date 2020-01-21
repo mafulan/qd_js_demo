@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="myjs.js"></script>
+    <style>
+    div{
+        margin: 50px 500px;
+        
+    }
+    input{
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <input type="text" value="0">商品1<br>
+        <input type="text" value="0">商品2<br>
+        <input type="text" value="0">商品3<br>
+        <input type="text" value="0">商品4<br>
+        <input type="text" value="0">商品5
+    </div>
+    <script>
+        var oDiv = document.querySelector("div");
+        delegation(oDiv,"input","click", function(){
+            this.value= fn1(this);
+            function fn1(obj){
+                doWheel(obj,{
+                "up":function(){
+                 obj.value++;
+            },
+            "down":function(){
+                if(obj.value>0){
+                    obj.value--;
+                }
+            }
+        })
+        return obj.value;
+            }
+            
+        })
+
+
+
+
+        
+           
+        
+
+    </script>
+</body>
+</html>

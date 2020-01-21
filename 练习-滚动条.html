@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        height: 2000px;
+    }
+    button{
+        width: 100px;
+        height: 35px;
+        font-size: 15px;
+        position: fixed;
+        right: 10px;
+        bottom: 15px;
+    }
+    button:after{
+        display: inline;
+        content:"->";
+    }
+    </style>
+</head>
+<body>
+    <!-- 页面刷新或移动滚动条时若滚动条的位置大于200则显示按钮，点击按钮滚动条回到最顶端  -->
+    <button>回到顶部</button>
+    <script>
+        var oBtn = document.querySelector("button");
+        window.onload=window.onscroll = function(){
+            var scrollTop =  document.body.scrollTop || document.documentElement.scrollTop;
+            if(scrollTop<200){
+              oBtn.style.display = "none";
+            }else{
+                oBtn.style.display = "block";
+             }
+             oBtn.onclick = function(){
+                window.scrollTo(0,0); 
+                  }
+            }
+        
+    </script>
+</body>
+</html>

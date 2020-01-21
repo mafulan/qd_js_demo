@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var oDiv = document.querySelector("div");
+        //调用
+        doWheel(oDiv,{
+            "up":function(){
+                var he = oDiv.offsetHeight;
+                oDiv.style.height=(he-1)+"px";
+            },
+            "down":function(){
+                var he = oDiv.offsetHeight;
+                oDiv.style.height=(he+1)+"px";
+            }
+        })
+
+        //封装
+        function doWheel(obj,fns,stop){//鼠标滚轮事件
+            var up = fns.up ||function(){};
+            var down =fns.down ||function(){};
+            var stop = stop ===undefined ?true :stop;
+            var fire = window.navigator.userAgent.indexOf("Firefox")>=0;
+            if(fire){
+                obj.addEventListener("DOMMouseScroll",function(){
+                     var b = event.detail <0? true:false;
+                     b? up():down();
+                     if(stop){
+                         event.preventDefault();
+                     }
+                },false)
+            }else{
+                obj.onmousewheel = function(){
+                    var b =event.wheelDelta>0?true:false;
+                    b ? up():down();
+                    if(stop){
+                        return false;
+                    }
+                }
+            }
+        }
+
+        </script>
+</body>
+</html>

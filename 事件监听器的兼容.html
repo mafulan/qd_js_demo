@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // document.attachEvent("onclick",function (){
+    //     alert(123);
+    // });
+    function fn(){
+        alert(this);
+    }
+    document.attachEvent("onclick",function (){
+        // alert(this);
+        fn.call(document);
+    });
+    // document.addEventListener("click",function (){
+    //     alert(this);
+    // },false);
+    //区别1：参数不一样
+    //区别2：事件顺序不一样
+    //区别3：this不一样
+    //区别4：阻止冒泡和浏览器默认行为写法不一样
+    //call方法：调用函数并改变this的指向
+    // function fn1(){
+    //     console.log(this);
+    // }
+    // fn1();
+    // fn1.call(document);
+    </script>
+</body>
+</html>
